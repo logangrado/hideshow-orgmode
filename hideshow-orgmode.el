@@ -1,3 +1,8 @@
+(require 'hideshow)
+(setq hs-allow-nesting t) ;;If this isn't set, child blocks won't rember their folded state
+
+;;Interactive Functions
+;;================================================================================
 (defun hs-cycle ()
   "Progressively shows more blocks under current block, then hide all blocks"
   (interactive)
@@ -28,6 +33,8 @@
    )
   )
 
+;;Helper functions
+;;================================================================================
 (defun hs-contains-hidden (minp maxp)
   "Returns nil if there is no overlay between minp and maxp"
   (goto-char minp)
@@ -43,10 +50,8 @@
     )
   )
 
-;;Recursive hide
-;;=======================================================
 (defun hs-hide-recursive (minp maxp)
-  "Hide all blocks between minp,maxp recursively"
+  "Hide all blocks between minp,maxp recursively (deepest level up)"
   (hs-life-goes-on
    (save-excursion
      (goto-char minp)
@@ -63,18 +68,6 @@
    )
   )
 
-(defun hs-hide-all-recursive ()
-  "Hide all blocks recursively"
-  (interactive)
-  (hs-life-goes-on
-   (save-excursion
-     (message "Hiding all recursively ...")
-     (hs-hide-recursive (point-min) (point-max))
-     (message "Hiding all recursively ... done")
-     (run-hooks 'hs-hide-hook)
-     )
-   )
-  )
 
 ;;Find max depth
 (defun hs-max-depth-recursive (depth minp maxp)
@@ -94,3 +87,6 @@
     max_depth
     )
   )
+
+;;Provide
+(provide 'hideshow-orgmode)
