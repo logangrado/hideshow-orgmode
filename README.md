@@ -1,13 +1,10 @@
 hideshow-orgmode.el
 ===================
 
-hideshow-org.el provides an org-mode like interface to the
+Hideshow-orgmode.el provides an org-mode like interface to the
 hideshow minor mode.
 
-org-mode provides an elegant means of interacting with outlines
-that one can toggle with the TAB key and Shift TAB.
-hideshow-org.el is my attempt to bring the org-mode like hiding and
-showing to code.
+Org-mode provides an elegant means of interacting with outlines that one can toggle with the TAB key and Shift TAB. Hideshow-orgmode.el attempts to replicate the outline behavior of org-mode.
 
 ## Download
 
