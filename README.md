@@ -23,11 +23,11 @@ This package is designed to allow for the cycling of hidden code blocks much lik
 
 This package provides two functions:
 
-	1. hs-cycle - Cycles the current block
+1. hs-cycle - Cycles the current block
 	
 	![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle.gif)
 	
-	2 hs-cycle-all - Cycles all blocks
+2 hs-cycle-all - Cycles all blocks
 	
 	![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle-all.gif)
 
