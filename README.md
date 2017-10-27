@@ -25,11 +25,11 @@ This package provides two functions:
 
 1. hs-cycle - Cycles the current block
 	
-	![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle.gif)
+![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle.gif)
 	
 2 hs-cycle-all - Cycles all blocks
 	
-	![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle-all.gif)
+![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle-all.gif)
 
 ## Keymaps
 
