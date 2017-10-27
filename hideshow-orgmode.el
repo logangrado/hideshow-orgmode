@@ -28,12 +28,13 @@
   (hs-life-goes-on
    (save-excursion
      (when (hs-find-block-beginning)
-       (setq minp (point))		;Set minp to beg+1
-       (funcall hs-forward-sexp-func 1)	;Goes to end of current block
-       (setq maxp (point))		;Set maxp to end-1s
-       (if (hs-contains-hidden minp maxp)
-	   (hs-discard-overlays minp maxp)
-	 (hs-hide-recursive minp maxp))))))
+       (let (minp maxp)
+	 (setq minp (point))		;Set minp to beg+1
+	 (funcall hs-forward-sexp-func 1)	;Goes to end of current block
+	 (setq maxp (point))		;Set maxp to end-1s
+	 (if (hs-contains-hidden minp maxp)
+	     (hs-discard-overlays minp maxp)
+	   (hs-hide-recursive minp maxp)))))))
 
 (defun hs-cycle-all()
   "Progressive show more blocks all are shown, then hide all blocks"
