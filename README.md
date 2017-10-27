@@ -6,6 +6,8 @@ hideshow minor mode.
 
 Org-mode provides an elegant means of interacting with outlines that one can toggle with the TAB key and Shift TAB. Hideshow-orgmode.el attempts to replicate the outline behavior of org-mode.
 
+![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle-all.gif)
+
 ## Download
 
 	$ git clone git@github.com:logangrado/hideshow-orgmode.git
@@ -25,11 +27,7 @@ This package provides two functions:
 
 1. hs-cycle - Cycles the current block
 	
-![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle.gif)
-	
 2 hs-cycle-all - Cycles all blocks
-	
-![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle-all.gif)
 
 ## Keymaps
 
