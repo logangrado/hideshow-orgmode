@@ -33,11 +33,7 @@
        (setq maxp (point))		;Set maxp to end-1s
        (if (hs-contains-hidden minp maxp)
 	   (hs-discard-overlays minp maxp)
-	 (hs-hide-recursive minp maxp))
-       )
-     )
-   )
-  )
+	 (hs-hide-recursive minp maxp))))))
 
 (defun hs-cycle-all()
   "Progressive show more blocks all are shown, then hide all blocks"
@@ -46,11 +42,7 @@
    (save-excursion
      (if (hs-contains-hidden (point-min) (point-max))
 	 (hs-discard-overlays (point-min) (point-max))
-       (hs-hide-recursive (point-min) (point-max))
-       )
-     )
-   )
-  )
+       (hs-hide-recursive (point-min) (point-max))))))
 
 ;;Helper functions
 ;;================================================================================
@@ -63,11 +55,8 @@
 	     (and(and (< (point) maxp) ;Ensure we're not past maxp
 		      (re-search-forward hs-block-start-regexp maxp t))
 		 (not contains_hidden))) ;Searches forward for next blockstart
-      (setq contains_hidden (hs-already-hidden-p))
-      )
-    contains_hidden
-    )
-  )
+      (setq contains_hidden (hs-already-hidden-p)))
+    contains_hidden))
 
 (defun hs-hide-recursive (minp maxp)
   "Hide all blocks between minp,maxp recursively (deepest level up)"
@@ -79,14 +68,9 @@
      (while (> maxd 0)
        (goto-char minp)
        (hs-hide-level-recursive maxd minp maxp)
-       (setq maxd (1- maxd))
-       )
+       (setq maxd (1- maxd)))
      (goto-char minp)
-     (hs-hide-block)
-     )
-   )
-  )
-
+     (hs-hide-block))))
 
 ;;Find max depth
 (defun hs-max-depth-recursive (depth minp maxp)
@@ -101,11 +85,8 @@
 	     (forward-comment (buffer-size)) ;forward-comment moves forward across count complete comments
 	     (and (< (point) maxp) ;Ensure we're not past maxp
 		  (re-search-forward hs-block-start-regexp maxp t))) ;Searches forward for next blockstart
-      (setq max_depth (max max_depth (hs-max-depth-recursive (1+ depth) minp maxp)))
-      )
-    max_depth
-    )
-  )
+      (setq max_depth (max max_depth (hs-max-depth-recursive (1+ depth) minp maxp))))
+    max_depth))
 
 ;;Provide
 (provide 'hideshow-orgmode)
