@@ -27,7 +27,7 @@ This package provides two functions:
 
 1. hs-cycle - Cycles the current block
 	
-2 hs-cycle-all - Cycles all blocks
+2. hs-cycle-all - Cycles all blocks
 
 ## Keymaps
 
