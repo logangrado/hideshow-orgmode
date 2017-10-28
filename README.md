@@ -33,8 +33,8 @@ This package provides two functions:
 
 I set this as my global key.
 
-	(global-set-key (kbd "C-h") 'hs-cycle)
-	(global-set-key (kbd "M-h") 'hs-cycle-all)
+	(global-set-key (kbd "C-c h") 'hs-cycle)
+	(global-set-key (kbd "C-c H") 'hs-cycle-all)
 
 ## Notes
 
