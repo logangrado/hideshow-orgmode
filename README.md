@@ -31,7 +31,7 @@ This package provides two functions:
 
 ## Keymaps
 
-I set this as my global key.
+I set this as my global keymaps in my init file. You of course are free to bind whatever you want.
 
 	(global-set-key (kbd "C-c h") 'hs-cycle)
 	(global-set-key (kbd "C-c H") 'hs-cycle-all)
