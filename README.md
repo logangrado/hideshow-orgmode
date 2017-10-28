@@ -4,7 +4,7 @@ hideshow-orgmode.el
 Hideshow-orgmode.el provides an org-mode like interface to the
 hideshow minor mode.
 
-Org-mode provides an elegant means of interacting with outlines that one can toggle with the TAB key and Shift TAB. Hideshow-orgmode.el attempts to replicate the outline behavior of org-mode.
+`Org-mode` provides an elegant means of interacting with outlines that one can toggle with `TAB` and `S-TAB`. `Hideshow-orgmode.el` attempts to replicate the outline behavior of `org-mode` by providing two functions: `hs-cycle` and `hs-cycle-all`.
 
 ![](https://github.com/logangrado/hideshow-orgmode/blob/master/gif/hs-cycle-all.gif)
 
@@ -35,6 +35,10 @@ I set this as my global keymaps in my init file. You of course are free to bind 
 
 	(global-set-key (kbd "C-c h") 'hs-cycle)
 	(global-set-key (kbd "C-c H") 'hs-cycle-all)
+	
+## Languages
+
+I've only really tested this package in `python major mode`. However, since the package leverages `hideshow`'s definition of foldable blocks, it \*should\* work anywhere `hideshow minor mode` works.
 
 ## Notes
 
