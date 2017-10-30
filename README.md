@@ -48,3 +48,6 @@ I've only really tested this package in `python major mode`. However, since the 
 ## Notes
 
 This package tries to replicate the successive unfolding of code blocks like org mode. Unlike org-mode, which leverages TAB, this package relies on binding a separate key. [Hideshow-org.el](https://github.com/shanecelis/hideshow-org) attempts to replicate the smart TAB functionality of org-mode. It would not be difficult combine hideshow-orgmode.el and hideshow-org.el to achieve true org-mode like code folding. However, for code without opening/closing brackets (I'm looking at you, Python), when the TAB key is pressed, emacs will cycle through possible indentations.
+
+## TODO
+- [ ] Currently, `hs-cycle` does not work when the cursor is *within* a blockstart regexp (i.e. for `class ClassName(object)...`, it doesn't detect that it is in a block if the cursor is on `lass` of `class`, but anywhere else is fine). This appears to be related to `hs-find-block-beginning`.
