@@ -45,6 +45,15 @@
 	 (hs-discard-overlays (point-min) (point-max))
        (hs-hide-recursive (point-min) (point-max))))))
 
+(defun hs-fold-all()
+  "Hides all blocks. Differs from 'hs-hide-all' in that it also folds all child blocks"
+  (interactive)
+  (hs-life-goes-on
+   (hs-find-block-beginning) ;go to beginning of block
+   (save-excursion
+     (goto-char (point-min))
+     (hs-hide-recursive (point-min) (point-max)))))
+  
 ;;Helper functions
 ;;================================================================================
 (defun hs-contains-hidden (minp maxp)
