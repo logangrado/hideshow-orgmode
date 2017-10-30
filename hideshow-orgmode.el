@@ -27,6 +27,7 @@
   (interactive)
   (hs-life-goes-on
    (save-excursion
+     (move-beginning-of-line 1)
      (when (hs-find-block-beginning)
        (let (minp maxp)
 	 (setq minp (point))		;Set minp to beg+1
