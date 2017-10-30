@@ -41,9 +41,9 @@ I set this as my global keymaps in my init file. You of course are free to bind 
 	(global-set-key (kdb "C-c h") 'hs-fold-all)
 	(global-set-key (kdb "C-c s") 'hs-show-all)
 	
-I also added the following line to my init file, which automatically folds all blocks when opening a document
+I also added the following line to my init file, which automatically folds all blocks when opening a document, much like org-mode:
 
-        (add-hook 'hs-minor-mode-hook 'hs-fold-all)
+	(add-hook 'hs-minor-mode-hook 'hs-fold-all)
 	
 ## Languages
 
