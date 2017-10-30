@@ -29,12 +29,17 @@ This package provides two functions:
 	
 2. `hs-cycle-all` - Cycles all blocks
 
+3. `hs-fold-all` - Folds all blocks. 
+This function differes from `hideshow`'s `hs-hide-all` in that it also folds child blocks. This function is complimentary to `hs-show-all`, which unfolds all blocks.
+
 ## Keymaps
 
 I set this as my global keymaps in my init file. You of course are free to bind whatever you want.
 
-	(global-set-key (kbd "C-c h") 'hs-cycle)
-	(global-set-key (kbd "C-c H") 'hs-cycle-all)
+	(global-set-key (kbd "C-c c") 'hs-cycle)
+	(global-set-key (kbd "C-c C") 'hs-cycle-all)
+	(global-set-key (kdb "C-c h") 'hs-fold-all)
+	(global-set-key (kdb "C-c s") 'hs-show-all)
 	
 ## Languages
 
