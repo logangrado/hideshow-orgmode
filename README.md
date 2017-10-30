@@ -32,7 +32,7 @@ This package provides two functions:
 3. `hs-fold-all` - Folds all blocks. 
 This function differes from `hideshow`'s `hs-hide-all` in that it also folds child blocks. This function is complimentary to `hs-show-all`, which unfolds all blocks.
 
-## Keymaps
+## Keymaps & Tips
 
 I set this as my global keymaps in my init file. You of course are free to bind whatever you want.
 
@@ -40,6 +40,10 @@ I set this as my global keymaps in my init file. You of course are free to bind 
 	(global-set-key (kbd "C-c C") 'hs-cycle-all)
 	(global-set-key (kdb "C-c h") 'hs-fold-all)
 	(global-set-key (kdb "C-c s") 'hs-show-all)
+	
+I also added the following line to my init file, which automatically folds all blocks when opening a document
+
+        (add-hook 'hs-minor-mode-hook 'hs-fold-all)
 	
 ## Languages
 
