@@ -55,7 +55,7 @@
      (goto-char (point-min))
      (hs-hide-recursive (point-min) (point-max)))))
   
-;;Helper functions
+;;Support functions
 ;;================================================================================
 (defun hs-contains-hidden (minp maxp)
   "Returns nil if there is no overlay between minp and maxp"
@@ -75,29 +75,41 @@
    (save-excursion
      (goto-char minp)
      (save-excursion
-       (setq maxd (hs-max-depth-recursive 0 minp maxp)))
-     (while (> maxd 0)
-       (goto-char minp)
-       (hs-hide-level-recursive maxd minp maxp)
-       (setq maxd (1- maxd)))
-     (goto-char minp)
+       (let ((maxd (hs-max-depth minp maxp)))
+	 (while (> maxd 0)
+	   (goto-char minp)
+	   (hs-hide-level-recursive maxd minp maxp)
+	   (setq maxd (1- maxd)))))
      (hs-hide-block))))
 
-;;Find max depth
 (defun hs-max-depth-recursive (depth minp maxp)
-  "Find max depth of region"
-  (when (hs-find-block-beginning)   	;Goes to beginning of current block
-    (setq minp (1+ (point)))		;Set minp to beg+1
-    (funcall hs-forward-sexp-func 1)	;Goes to end of current block
-    (setq maxp (1- (point))))		;Set maxp to end-1
+  (when (hs-find-block-beginning)
+    (setq minp (1+ (point)))
+    (funcall hs-forward-sexp-func 1)
+    (setq maxp (1- (point))))
   (goto-char minp)
+  
   (let ((max_depth depth))
     (while (progn
-	     (forward-comment (buffer-size)) ;forward-comment moves forward across count complete comments
-	     (and (< (point) maxp) ;Ensure we're not past maxp
-		  (re-search-forward hs-block-start-regexp maxp t))) ;Searches forward for next blockstart
-      (setq max_depth (max max_depth (hs-max-depth-recursive (1+ depth) minp maxp))))
+	     (forward-comment (buffer-size))
+	     (and (< (point) maxp)
+		  (re-search-forward hs-block-start-regexp maxp t)))
+      (if (and
+	   (not (nth 3 (syntax-ppss))) ;t if NOT in string
+	   (not (nth 4 (syntax-ppss)))) ;t if NOT in comment
+	  (setq max_depth (max max_depth (hs-max-depth-recursive (1+ depth) (point) maxp)))))
     max_depth))
+
+(defun hs-max-depth (&optional minp maxp)
+  (save-excursion
+    (if (not minp) (setq minp (point-min)))
+    (if (not maxp) (setq maxp (point-max)))
+    (goto-char minp)
+    (when (hs-find-block-beginning)
+      (setq minp (1+ (point)))
+      (funcall hs-forward-sexp-func 1)	;Goes to end of current block
+      (setq maxp (1- (point))))		;Set maxp to end-1
+    (hs-max-depth-recursive 0 minp maxp)))
 
 ;;Provide
 (provide 'hideshow-orgmode)
