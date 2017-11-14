@@ -54,6 +54,20 @@
    (save-excursion
      (goto-char (point-min))
      (hs-hide-recursive (point-min) (point-max)))))
+
+(defun hs-fold-block()
+  "Hides current block recursively"
+  (interactive)
+  (hs-life-goes-on
+   (save-excursion
+    (move-beginning-of-line 1)
+    (let ((minp nil) (maxp nil))
+      (when (hs-find-block-beginning)
+	(setq minp (point))
+	(funcall hs-forward-sexp-func 1)
+	(setq maxp (1- (point)))
+	(goto-char minp)
+	(hs-hide-recursive minp maxp))))))
   
 ;;Support functions
 ;;================================================================================
